@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_18_193017) do
+ActiveRecord::Schema.define(version: 2020_10_19_181350) do
 
   create_table "Checkouts_Products", id: false, force: :cascade do |t|
     t.integer "Checkout_id", null: false
@@ -44,11 +44,21 @@ ActiveRecord::Schema.define(version: 2020_10_18_193017) do
     t.float "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "rules", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "products_id"
+    t.integer "minimums_id", null: false
+    t.integer "discounts_id", null: false
+    t.index ["discounts_id"], name: "index_rules_on_discounts_id"
+    t.index ["minimums_id"], name: "index_rules_on_minimums_id"
+    t.index ["products_id"], name: "index_rules_on_products_id"
   end
 
+  add_foreign_key "rules", "discounts", column: "discounts_id"
+  add_foreign_key "rules", "minimums", column: "minimums_id"
+  add_foreign_key "rules", "products", column: "products_id"
 end
