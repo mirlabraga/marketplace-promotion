@@ -1,5 +1,5 @@
 class Rule < ApplicationRecord
-  belongs_to :minimum
-  belongs_to :discount
-  belongs_to :product
+  belongs_to :minimums
+  belongs_to :discounts
+  belongs_to :products
 end

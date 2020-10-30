@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_19_181350) do
+ActiveRecord::Schema.define(version: 2020_10_23_091744) do
 
   create_table "Checkouts_Products", id: false, force: :cascade do |t|
     t.integer "Checkout_id", null: false
@@ -26,14 +26,14 @@ ActiveRecord::Schema.define(version: 2020_10_19_181350) do
   end
 
   create_table "discounts", force: :cascade do |t|
-    t.integer "type"
+    t.integer "category"
     t.float "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "minimums", force: :cascade do |t|
-    t.integer "type"
+    t.integer "category"
     t.float "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
